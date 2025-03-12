@@ -1,0 +1,17 @@
+import pandas as pd 
+from pandas.core.algorithms import value_counts
+
+censo2020 = pd.read_csv ('/content/drive/MyDrive/Colab Notebooks/microdados_ed_basica_2020.CSV', sep=';', encoding='iso-8859-1')
+
+censo2020.head () [:3]
+
+censo2020.columns.values
+
+#0 Não tem localização diferenciada
+#1Escola em assentamento
+#2Terra indígena
+#3Escolas Quilombolas
+censo2020.groupby('TP_LOCALIZACAO_DIFERENCIADA')['NU_ANO_CENSO'].count()
+
+quilombola = censo2020['TP_LOCALIZACAO_DIFERENCIADA'] == 3
+quilombola.value_counts()
